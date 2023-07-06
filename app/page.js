@@ -11,16 +11,24 @@ export default function Home() {
 
 		const formData = new FormData(e.currentTarget)
 
-		const response = await fetch('api/langchain', {
+		const response = await fetch('api/chat', {
 			method: 'POST',
-			body: JSON.stringify({
-				prompt: formData.get('prompt'),
-				key: formData.get('key'),
-			}),
+			body: JSON.stringify({ prompt: formData.get('prompt') }),
 			headers: {
 				'Content-Type': 'application/json',
 			},
 		})
+
+		// const response = await fetch('api/langchain', {
+		// 	method: 'POST',
+		// 	body: JSON.stringify({
+		// 		prompt: formData.get('prompt'),
+		// 		key: formData.get('key'),
+		// 	}),
+		// 	headers: {
+		// 		'Content-Type': 'application/json',
+		// 	},
+		// })
 
 		const reader = response.body.getReader()
 
